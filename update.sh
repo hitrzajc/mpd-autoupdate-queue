@@ -1,4 +1,4 @@
-sudo
+sudo echo "Going sudo!!!"
 
 git pull
 make
