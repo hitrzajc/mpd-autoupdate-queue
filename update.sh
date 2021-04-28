@@ -1,4 +1,6 @@
 git pull
 make
-cp -f mpd-autoupdate-queue /usr/bin/
-cp -f mpd-autoupdate-queue.* /etc/systemd/system/
+cp -f mpd-update-queue /usr/bin/
+cp -f mpd-update-queue.* /etc/systemd/system/
+
+sudo systemctl enable mpd-update-queue.timer
