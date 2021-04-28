@@ -1,0 +1,10 @@
+[Unit]
+Description=Update mpd queue
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/bin/mpd-autoupdate-queue
+
+[Install]
+WantedBy=multi-user.target
