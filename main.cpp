@@ -43,6 +43,8 @@ bool addsongs(){
            return 0;
         }
     }
+    
+    fprintf(stdout, "Succesfuly added %d songs", size - songs.size());
     return 1;
 }
 
