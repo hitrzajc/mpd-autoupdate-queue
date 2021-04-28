@@ -1,5 +1,5 @@
 #include "headers.h"
-#include "random.cpp"
+#include "random.h"
 #include "data.h"
 
 
@@ -39,9 +39,9 @@ bool addsongs(){
         size++;
         int idx = range(1,size);
         if(mpd_run_add_id_to(conn, uric, idx)==-1){
-           cout << "erno" << endl;
+           fprintf(stderr, "cannot add %s to %d idx", uric, idx);
+           return 0;
         }
-        //cout << idx << " " << id << " " << uri << endl;
     }
     return 1;
 }
@@ -49,7 +49,7 @@ bool addsongs(){
 bool getsongs(){
     // add queue to buffer
     if(!mpd_send_list_queue_meta(conn)){
-        fprintf(stdout, "Could not recieve queue data\n");
+        fprintf(stderr, "Could not recieve queue data\n");
         return 0;
     }
     // get songs in queue
@@ -77,7 +77,7 @@ bool connect(){
 
     // enter password
     if (!mpd_run_password(conn, MPD_PASSWORD)){
-        fprintf(stdout, "Incorrect password\n");
+        fprintf(stderr, "Incorrect password\n");
         return 0;
     }
     return 1;
@@ -96,8 +96,6 @@ int main(){
         return 0;
     }
 
- 
-    // we can now use the connection
     // close the connection and free memory
     mpd_connection_free(conn);
     return 0;
