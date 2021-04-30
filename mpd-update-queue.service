@@ -4,7 +4,7 @@ Description=Update mpd queue
 [Service]
 Type=oneshot
 RemainAfterExit=no
-ExecStart=/usr/bin/mpd-autoupdate-queue
+ExecStart=/usr/bin/mpd-update-queue
 
 [Install]
 WantedBy=multi-user.target
