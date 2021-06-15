@@ -1,4 +1,6 @@
 # mpd-autoupdate-queue
 
-scans for music that is not in main queue and adds it. 
-if you want to exclude folder go to data.h
+Scans for music that is not in main queue and adds song to it. 
+If you want to exclude first level folders go to data.h.
+
+Change data.h.example to data.h and edit its content. Then run update.sh

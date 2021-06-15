@@ -23,19 +23,27 @@ bool addsongs(){
         //cout << mpd_song_get_uri(song) << endl; 
         const char *uric = mpd_song_get_uri(song);
         string uri = uric;
-        int c = 0;
-        for(auto x:EXCLUDE){
+        
+        if(songs.count(uri)){
+            continue;
+        }
+        
+        bool blocked = 0;
+        for(auto x:EXCLUDE){ // can be change to Z function for more acurate filtering
+            bool flag = 1;
             if(strlen(x)>uri.size()){
-                c++;continue;
+                continue;
             }
             for(int i=0;i<strlen(x);i++){
                 if(uri[i]!=x[i]){
-                    c++;break;
+                    flag = 0;
+                    break;
                 }
             }
+            blocked |= flag;
+            if(blocked) break;
         }
-        if(c!=2) continue;
-        if(songs.count(uri))continue;
+        if(blocked) continue;
         size++;
         int idx = range(1,size);
         if(mpd_run_add_id_to(conn, uric, idx)==-1){
@@ -44,7 +52,7 @@ bool addsongs(){
         }
     }
     
-    fprintf(stdout, "Succesfuly added %d songs\n", size - songs.size());
+    fprintf(stdout, "Succesfuly added %ld songs\n", size - songs.size());
     return 1;
 }
 

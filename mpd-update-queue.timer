@@ -1,5 +1,5 @@
 [Unit]
-Description=Run mpd-autoupdate-queue every day at 4am
+Description=Run mpd-update-queue every day at 4am
 
 [Timer]
 OnCalendar=*-*-* 4:00:00
