@@ -3,7 +3,7 @@
 #include "data.h"
 
 
-void readqueue(){
+inline void readqueue(){
     while(song = mpd_recv_song(conn)){
         queue.push_back(song);
     }
@@ -93,7 +93,7 @@ bool connect(){
     return 1;
 }
 
-bool update_db(){
+inline bool update_db(){
     if (mpd_run_update(conn, NULL)==0){
         fprintf(stderr, "Couldn't update database\n");
         return 0;
