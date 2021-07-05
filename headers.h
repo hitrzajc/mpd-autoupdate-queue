@@ -17,6 +17,7 @@ vector<mpd_song*> queue;
 bool addsongs();
 bool getsongs();
 bool connect();
+bool update_db();
 void readqueue();
 
 ll range(ll a,ll b);

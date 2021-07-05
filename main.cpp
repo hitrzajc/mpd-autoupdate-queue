@@ -93,8 +93,20 @@ bool connect(){
     return 1;
 }
 
+bool update_db(){
+    if (mpd_run_update(conn, NULL)==0){
+        fprintf(stderr, "Couldn't update database\n");
+        return 0;
+    }
+    return 1;
+}
+
 int main(){
     if(!connect()){
+        return 0;
+    }
+
+    if(!update_db()){
         return 0;
     }
     
