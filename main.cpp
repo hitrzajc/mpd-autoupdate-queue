@@ -47,7 +47,7 @@ bool addsongs(){
         int idx = range(0,size);
         size++;
         if(mpd_run_add_id_to(conn, uric, idx)==-1){
-           fprintf(stderr, "cannot add %s to %d idx, all songs:%d\n", uric, idx,size);
+           fprintf(stderr, "cannot add %s to %d idx\n", uric, idx);
            return 0;
         }
     }
